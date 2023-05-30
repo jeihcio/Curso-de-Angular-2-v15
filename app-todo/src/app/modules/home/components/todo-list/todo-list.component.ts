@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskList } from '../../model/task-list';
 
 @Component({
@@ -6,15 +6,16 @@ import { TaskList } from '../../model/task-list';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
 
-  public taskList: Array<TaskList> = [
-    {task: "Minha nova Task", checked: true},
-    {task: "Minha nova Task 2", checked: false}
-  ];
+  public taskList: Array<TaskList> = [];
 
-  constructor() { }  
-  ngOnInit(): void { }
+  public setEmitTaskList(event: string){
+    this.taskList.push({
+      task: event,
+      checked: false
+    });
+  }
 
   public deleteItemTaskList(event: number) {
     this.taskList.splice(event, 1);
