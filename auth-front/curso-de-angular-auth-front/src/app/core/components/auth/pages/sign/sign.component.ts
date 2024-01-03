@@ -23,6 +23,8 @@ export class SignComponent implements OnInit{
   ngOnInit(): void {}
 
   public submitForm() {
+    this.msgError = '';
+
     if (this.formAuth.valid) {
       this.authService.sign({
         email: this.formAuth.value.email,
